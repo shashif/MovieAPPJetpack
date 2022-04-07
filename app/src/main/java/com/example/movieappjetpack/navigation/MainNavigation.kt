@@ -13,8 +13,7 @@ import com.example.movieappjetpack.screens.home.HomeScreen
 fun MainNavigation() {
     val navController = rememberNavController()
     NavHost(
-        navController = navController,
-        startDestination = NavigationScreens.HomeScreen.name
+        navController = navController, startDestination = NavigationScreens.HomeScreen.name
     ) {
 
 
@@ -23,16 +22,15 @@ fun MainNavigation() {
         }
 
 
-        composable(NavigationScreens.DetailsScreen.name + "/{movie}",
-            arguments = listOf(navArgument(name = "movie") {
+        composable(NavigationScreens.DetailsScreen.name + "/{detailsInformation}",
+            arguments = listOf(navArgument(name = "detailsInformation") {
                 type = NavType.StringType
             }
 
-            )
-        ) { backStackEntry ->
+            )) { backStackEntry ->
             DetailsScreen(
                 navController = navController,
-                backStackEntry.arguments?.getString("movie")
+                backStackEntry.arguments?.getString("detailsInformation")
             )
 
         }
