@@ -23,8 +23,8 @@ fun MainNavigation() {
         }
 
 
-        composable(NavigationScreens.DetailsScreen.name + "/{movie}",
-            arguments = listOf(navArgument(name = "movie") {
+        composable(NavigationScreens.DetailsScreen.name + "/{detailsInformation}",
+            arguments = listOf(navArgument(name = "detailsInformation") {
                 type = NavType.StringType
             }
 
@@ -32,7 +32,7 @@ fun MainNavigation() {
         ) { backStackEntry ->
             DetailsScreen(
                 navController = navController,
-                backStackEntry.arguments?.getString("movie")
+                backStackEntry.arguments?.getString("detailsInformation")
             )
 
         }
