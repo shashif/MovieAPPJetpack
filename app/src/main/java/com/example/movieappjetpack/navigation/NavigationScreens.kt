@@ -1,11 +1,11 @@
 package com.example.movieappjetpack.navigation
 
-enum class MovieScreens {
+enum class NavigationScreens {
     HomeScreen,
     DetailsScreen;
 
     companion object{
-        fun fromRoute(route:String?):MovieScreens=when(route?.substringBefore("/")){
+        fun fromRoute(route:String?):NavigationScreens=when(route?.substringBefore("/")){
             HomeScreen.name->HomeScreen
             DetailsScreen.name->DetailsScreen
             null->HomeScreen
