@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.rememberImagePainter
 import com.example.movieappjetpack.MovieRow
+import com.example.movieappjetpack.model.DataClass
 import com.example.movieappjetpack.model.getMovies
 
 @Composable
@@ -60,21 +61,8 @@ fun DetailsScreen(
                 Divider()
 
                 Text(text = "Movie Image")
-                LazyRow {
-                    items(newDataList[0].images) { image ->
-                        Card(
-                            modifier = Modifier
-                                .padding(12.dp)
-                                .size(240.dp),
-                            elevation = 5.dp
-                        ) {
-                            Image(
-                                painter = rememberImagePainter(data = image),
-                                contentDescription = "Movie poster"
-                            )
-                        }
-                    }
-                }
+
+                HorizontalScrollableImage(newDataList)
 
 
                 Spacer(modifier = Modifier.height(23.dp))
@@ -93,4 +81,23 @@ fun DetailsScreen(
     }
 
 
+}
+
+@Composable
+private fun HorizontalScrollableImage(newDataList: List<DataClass>) {
+    LazyRow {
+        items(newDataList[0].images) { image ->
+            Card(
+                modifier = Modifier
+                    .padding(12.dp)
+                    .size(240.dp),
+                elevation = 5.dp
+            ) {
+                Image(
+                    painter = rememberImagePainter(data = image),
+                    contentDescription = "Movie poster"
+                )
+            }
+        }
+    }
 }
